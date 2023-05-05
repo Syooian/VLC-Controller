@@ -75,11 +75,19 @@ using System.IO;
 namespace vlcmote
 {
 
+
+
     enum VlcCommand
     {
         Add,
         Enqueue,
+        /// <summary>
+        /// ¼½©ñ
+        /// </summary>
         Play,
+        /// <summary>
+        /// ¥þ¿Ã¹õ
+        /// </summary>
         F,
         Is_Playing,
         Get_Time,
@@ -135,6 +143,16 @@ namespace vlcmote
             vlcProcess = Process.Start(info);
             client = new TcpClient("localhost", 9876);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Path"></param>
+        public VlcRemote(string Path)
+        {
+            var info = new ProcessStartInfo(Path, "-I rc --rc-host=localhost:9876");
+            vlcProcess = Process.Start(info);
+            client = new TcpClient("localhost", 9876);
+        }
 
         public Process VlcPlaybackProcess
         {
@@ -167,6 +185,11 @@ namespace vlcmote
         public void Play()
         {
             SendCommand(VlcCommand.Play);
+        }
+
+        public void Pause()
+        {
+            SendCommand(VlcCommand.Pause);
         }
 
         public void GoToFullScreen()

@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Control VLC\Control VLC.csproj">
+      <Project>{d62bf4fc-4066-4e8d-91ea-fb3028e3d1ef}</Project>
+      <Name>Control VLC</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

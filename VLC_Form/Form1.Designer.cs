@@ -29,13 +29,88 @@ namespace VLC_Form
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.Btn_Play = new System.Windows.Forms.Button();
+            this.Btn_Pause = new System.Windows.Forms.Button();
+            this.Btn_Stop = new System.Windows.Forms.Button();
+            this.Btn_SelectVLC = new System.Windows.Forms.Button();
+            this.Txt_VLCLocation = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // Btn_Play
+            // 
+            this.Btn_Play.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Btn_Play.Location = new System.Drawing.Point(12, 12);
+            this.Btn_Play.Name = "Btn_Play";
+            this.Btn_Play.Size = new System.Drawing.Size(90, 90);
+            this.Btn_Play.TabIndex = 0;
+            this.Btn_Play.Text = "Play";
+            this.Btn_Play.UseVisualStyleBackColor = true;
+            this.Btn_Play.Click += new System.EventHandler(this.Btn_Play_Click);
+            // 
+            // Btn_Pause
+            // 
+            this.Btn_Pause.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Btn_Pause.Location = new System.Drawing.Point(108, 12);
+            this.Btn_Pause.Name = "Btn_Pause";
+            this.Btn_Pause.Size = new System.Drawing.Size(90, 90);
+            this.Btn_Pause.TabIndex = 1;
+            this.Btn_Pause.Text = "Pause";
+            this.Btn_Pause.UseVisualStyleBackColor = true;
+            this.Btn_Pause.Click += new System.EventHandler(this.Btn_Pause_Click);
+            // 
+            // Btn_Stop
+            // 
+            this.Btn_Stop.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Btn_Stop.Location = new System.Drawing.Point(204, 12);
+            this.Btn_Stop.Name = "Btn_Stop";
+            this.Btn_Stop.Size = new System.Drawing.Size(90, 90);
+            this.Btn_Stop.TabIndex = 2;
+            this.Btn_Stop.Text = "Stop";
+            this.Btn_Stop.UseVisualStyleBackColor = true;
+            // 
+            // Btn_SelectVLC
+            // 
+            this.Btn_SelectVLC.Location = new System.Drawing.Point(12, 415);
+            this.Btn_SelectVLC.Name = "Btn_SelectVLC";
+            this.Btn_SelectVLC.Size = new System.Drawing.Size(75, 23);
+            this.Btn_SelectVLC.TabIndex = 3;
+            this.Btn_SelectVLC.Text = "選擇播放器";
+            this.Btn_SelectVLC.UseVisualStyleBackColor = true;
+            this.Btn_SelectVLC.Click += new System.EventHandler(this.Btn_SelectVLC_Click);
+            // 
+            // Txt_VLCLocation
+            // 
+            this.Txt_VLCLocation.AutoSize = true;
+            this.Txt_VLCLocation.Location = new System.Drawing.Point(10, 400);
+            this.Txt_VLCLocation.Name = "Txt_VLCLocation";
+            this.Txt_VLCLocation.Size = new System.Drawing.Size(91, 12);
+            this.Txt_VLCLocation.TabIndex = 4;
+            this.Txt_VLCLocation.Text = "Txt_VLCLocation";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Txt_VLCLocation);
+            this.Controls.Add(this.Btn_SelectVLC);
+            this.Controls.Add(this.Btn_Stop);
+            this.Controls.Add(this.Btn_Pause);
+            this.Controls.Add(this.Btn_Play);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button Btn_Play;
+        private System.Windows.Forms.Button Btn_Pause;
+        private System.Windows.Forms.Button Btn_Stop;
+        private System.Windows.Forms.Button Btn_SelectVLC;
+        private System.Windows.Forms.Label Txt_VLCLocation;
     }
 }
 
