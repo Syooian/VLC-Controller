@@ -34,6 +34,15 @@ namespace VLC_Form
             this.Btn_Stop = new System.Windows.Forms.Button();
             this.Btn_SelectVLC = new System.Windows.Forms.Button();
             this.Txt_VLCLocation = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Tb_RemoteIP = new System.Windows.Forms.TextBox();
+            this.Txt_Port = new System.Windows.Forms.Label();
+            this.Tb_RemotePort = new System.Windows.Forms.TextBox();
+            this.Tb_LocalPort = new System.Windows.Forms.TextBox();
+            this.Tb_LocalIP = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Btn_Add = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btn_Play
@@ -67,6 +76,7 @@ namespace VLC_Form
             this.Btn_Stop.TabIndex = 2;
             this.Btn_Stop.Text = "Stop";
             this.Btn_Stop.UseVisualStyleBackColor = true;
+            this.Btn_Stop.Click += new System.EventHandler(this.Btn_Stop_Click);
             // 
             // Btn_SelectVLC
             // 
@@ -87,11 +97,102 @@ namespace VLC_Form
             this.Txt_VLCLocation.TabIndex = 4;
             this.Txt_VLCLocation.Text = "Txt_VLCLocation";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 261);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 12);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Remote IP";
+            // 
+            // Tb_RemoteIP
+            // 
+            this.Tb_RemoteIP.Location = new System.Drawing.Point(108, 258);
+            this.Tb_RemoteIP.Name = "Tb_RemoteIP";
+            this.Tb_RemoteIP.Size = new System.Drawing.Size(186, 22);
+            this.Tb_RemoteIP.TabIndex = 6;
+            this.Tb_RemoteIP.Text = "192.168.2.100";
+            this.Tb_RemoteIP.TextChanged += new System.EventHandler(this.Tb_ServerIP_TextChanged);
+            // 
+            // Txt_Port
+            // 
+            this.Txt_Port.AutoSize = true;
+            this.Txt_Port.Location = new System.Drawing.Point(10, 289);
+            this.Txt_Port.Name = "Txt_Port";
+            this.Txt_Port.Size = new System.Drawing.Size(63, 12);
+            this.Txt_Port.TabIndex = 7;
+            this.Txt_Port.Text = "Remote Port";
+            this.Txt_Port.Click += new System.EventHandler(this.Txt_Port_Click);
+            // 
+            // Tb_RemotePort
+            // 
+            this.Tb_RemotePort.Location = new System.Drawing.Point(108, 286);
+            this.Tb_RemotePort.Name = "Tb_RemotePort";
+            this.Tb_RemotePort.Size = new System.Drawing.Size(186, 22);
+            this.Tb_RemotePort.TabIndex = 8;
+            this.Tb_RemotePort.Text = "20000";
+            this.Tb_RemotePort.TextChanged += new System.EventHandler(this.Tb_Port_TextChanged);
+            // 
+            // Tb_LocalPort
+            // 
+            this.Tb_LocalPort.Location = new System.Drawing.Point(108, 342);
+            this.Tb_LocalPort.Name = "Tb_LocalPort";
+            this.Tb_LocalPort.Size = new System.Drawing.Size(186, 22);
+            this.Tb_LocalPort.TabIndex = 10;
+            this.Tb_LocalPort.Text = "20000";
+            // 
+            // Tb_LocalIP
+            // 
+            this.Tb_LocalIP.Location = new System.Drawing.Point(108, 314);
+            this.Tb_LocalIP.Name = "Tb_LocalIP";
+            this.Tb_LocalIP.Size = new System.Drawing.Size(186, 22);
+            this.Tb_LocalIP.TabIndex = 9;
+            this.Tb_LocalIP.Text = "192.168.2.118";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 317);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 12);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Local IP";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 345);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Local Port";
+            // 
+            // Btn_Add
+            // 
+            this.Btn_Add.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Btn_Add.Location = new System.Drawing.Point(12, 108);
+            this.Btn_Add.Name = "Btn_Add";
+            this.Btn_Add.Size = new System.Drawing.Size(90, 90);
+            this.Btn_Add.TabIndex = 13;
+            this.Btn_Add.Text = "Add";
+            this.Btn_Add.UseVisualStyleBackColor = true;
+            this.Btn_Add.Click += new System.EventHandler(this.Btn_Add_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Btn_Add);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Tb_LocalPort);
+            this.Controls.Add(this.Tb_LocalIP);
+            this.Controls.Add(this.Tb_RemotePort);
+            this.Controls.Add(this.Txt_Port);
+            this.Controls.Add(this.Tb_RemoteIP);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Txt_VLCLocation);
             this.Controls.Add(this.Btn_SelectVLC);
             this.Controls.Add(this.Btn_Stop);
@@ -111,6 +212,15 @@ namespace VLC_Form
         private System.Windows.Forms.Button Btn_Stop;
         private System.Windows.Forms.Button Btn_SelectVLC;
         private System.Windows.Forms.Label Txt_VLCLocation;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Tb_RemoteIP;
+        private System.Windows.Forms.Label Txt_Port;
+        private System.Windows.Forms.TextBox Tb_RemotePort;
+        private System.Windows.Forms.TextBox Tb_LocalPort;
+        private System.Windows.Forms.TextBox Tb_LocalIP;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button Btn_Add;
     }
 }
 
