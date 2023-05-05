@@ -8,7 +8,9 @@ using System.Runtime.InteropServices;
 using System.Management;
 using System.Net.Sockets;
 using System.IO;
+using System.Threading;
 
+//https://stackoverflow.com/questions/59483332/how-to-programmatically-control-vlc-in-c
 //https://gist.github.com/SamSaffron/101357
 
 /*
@@ -147,12 +149,64 @@ namespace vlcmote
         /// 
         /// </summary>
         /// <param name="Path"></param>
-        public VlcRemote(string Path)
+        /// <param name="IP"></param>
+        /// <param name="Port"></param>
+        public VlcRemote(string Path, string IP, int Port)
         {
-            var info = new ProcessStartInfo(Path, "-I rc --rc-host=localhost:9876");
-            vlcProcess = Process.Start(info);
-            client = new TcpClient("localhost", 9876);
+            try
+            {
+                //var info = new ProcessStartInfo(Path, "--rc-host=" + IP + ":" + Port);
+                //var info = new ProcessStartInfo(Path, "-I qt --rc-host=" + IP + ":" + Port);
+                var info = new ProcessStartInfo(Path, "--extraintf=\"rc\" --rc-host=" + IP + ":" + Port);
+
+                vlcProcess = Process.Start(info);
+                client = new TcpClient(IP, Port);
+
+                Thread GetMessageThread = new Thread(new ThreadStart(this.GetMessageThread));
+                GetMessageThread.IsBackground = true;
+                GetMessageThread.Start();
+
+            }
+            catch (Exception ex)
+            {
+                Debug.Print("VLC Remote : " + ex.Message);
+            }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void GetMessageThread()
+        {
+            Thread.Sleep(1000);
+
+            Debug.Print("Thread Start");
+
+            while (client.Connected)
+            {
+                var ns = client.GetStream();
+                if (ns.CanRead)
+                {
+                    int BytesRead = 0;
+                    byte[] Bytes = new byte[client.ReceiveBufferSize];
+
+                    while (ns.DataAvailable)
+                    {
+                        BytesRead = ns.Read(Bytes, 0, Bytes.Length);
+                        GetMessageAction.Invoke(Encoding.UTF8.GetString(Bytes, 0, BytesRead));
+                    }
+                }
+
+
+            }
+
+            Debug.Print("Client Out");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Action<string> GetMessageAction;
 
         public Process VlcPlaybackProcess
         {
@@ -263,15 +317,19 @@ namespace vlcmote
             }
             packet += Environment.NewLine;
 
+            Debug.Print("SendCommand : " + packet);
+
             var buffer = ASCIIEncoding.GetBytes(packet);
             client.GetStream().Write(buffer, 0, buffer.Length);
             client.GetStream().Flush();
 
-
             Trace.Write(packet);
-
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ReadTillEnd()
         {
             StringBuilder sb = new StringBuilder();
@@ -280,6 +338,7 @@ namespace vlcmote
                 int b = client.GetStream().ReadByte();
                 if (b >= 0)
                 {
+                    Debug.Print("B : " + b);
                     sb.Append((char)b);
                 }
                 else
@@ -287,7 +346,26 @@ namespace vlcmote
                     break;
                 }
             }
+
+            Debug.Print("Get Player Msg : " + sb);
             return sb.ToString();
+
+            //string Str = null;
+            //while (client.GetStream().DataAvailable)
+            //{
+            //    var sr = new StreamReader(client.GetStream());
+            //    var data = sr.ReadLine();
+
+            //    if (!string.IsNullOrEmpty(data))
+            //    {
+            //        Debug.Print("Get Player Msg : " + data);
+            //        Str = data;
+            //    }
+
+            //    break;
+            //}
+
+            //return Str;
         }
 
     }
