@@ -53,7 +53,9 @@ namespace Control_VLC
             Media = new Media(VLC, VideoPath);
         }
 
-
+        /// <summary>
+        /// 播放
+        /// </summary>
         public void Play()
         {
             if (MediaPlayer == null)
@@ -65,6 +67,52 @@ namespace Control_VLC
 
             MediaPlayer.Play();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsPlaying
+        {
+            get
+            {
+                if (MediaPlayer == null)
+                    return false;
+                else
+                    return MediaPlayer.IsPlaying;
+            }
+        }
+        /// <summary>
+        /// 影片總秒數
+        /// <para>單位：秒, -1 : 錯誤</para>
+        /// </summary>
+        public int GetTotalTime
+        {
+            get
+            {
+                if (MediaPlayer == null)
+                    return -1;
+                else
+                {
+                    return (int)TimeSpan.FromMilliseconds(MediaPlayer.Length).TotalSeconds;
+                }
+            }
+        }
+        /// <summary>
+        /// 現在播放時間總秒數
+        /// <para>單位：秒, -1 : 無影片</para>
+        /// </summary>
+        public int GetCurrentTime
+        {
+            get
+            {
+                if (MediaPlayer == null)
+                    return -1;
+                else
+                {
+                    return (int)TimeSpan.FromMilliseconds(MediaPlayer.Time).TotalSeconds;
+                }
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>

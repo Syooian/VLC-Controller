@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -54,10 +55,10 @@ namespace VLC_Form
         /// </summary>
         void StartServer()
         {
-            if (Server != null)
-            {
-                Server.Stop();
-            }
+            //if (Server != null)
+            //{
+            //    Server.Stop();
+            //}
 
             //string HostName = Dns.GetHostName();
             //Debug.Print("主機名稱 : " + HostName);
@@ -66,14 +67,35 @@ namespace VLC_Form
             //for (int a = 0; a < IPA.Length; a++)
             //    Debug.Print("主機IP : " + IPA[a].ToString());
 
-            try
+            //try
+            //{
+            //    Server = new TcpListener(IPAddress.Parse(Tb_LocalIP.Text), int.Parse(Tb_LocalPort.Text));
+            //    Server.Start();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.Print("建立Server錯誤 : " + ex.Message);
+            //}
+
+            Thread Load = new Thread(new ThreadStart(LoadingThread));
+            Load.IsBackground = true;
+            Load.Start();
+
+
+            //Txt_CurrentTime.Invoke((MethodInvoker)() =>  Txt_CurrentTime.Text = VLCController.CurrentTime.ToString());
+        }
+
+        void LoadingThread()
+        {
+            while (true)
             {
-                Server = new TcpListener(IPAddress.Parse(Tb_LocalIP.Text), int.Parse(Tb_LocalPort.Text));
-                Server.Start();
-            }
-            catch (Exception ex)
-            {
-                Debug.Print("建立Server錯誤 : " + ex.Message);
+                if (VLCController != null)
+                {
+                    //Txt_CurrentTime.Invoke((MethodInvoker)(() => { Txt_CurrentTime.Text = VLCController.CurrentTime.ToString(); }));
+                    Invoke((MethodInvoker)(() => { Txt_CurrentTime.Text = VLCController.GetCurrentTime.ToString(); }));
+                }
+
+                Thread.Sleep(100);
             }
         }
 
@@ -109,7 +131,7 @@ namespace VLC_Form
 
                     int Port = int.Parse(Tb_LocalPort.Text);
 
-                    //StartServer();
+                    StartServer();
 
                     VLCController = new Control_VLC.VLCController(OpenFileDialog.FileName, Tb_LocalIP.Text, Port);
                 }
@@ -172,6 +194,8 @@ namespace VLC_Form
             if (VLCController != null)
             {
                 VLCController.Play();
+
+                Debug.Print("影片總長 : " + VLCController.GetTotalTime);
             }
         }
         /// <summary>
