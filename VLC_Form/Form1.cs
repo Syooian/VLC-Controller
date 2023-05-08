@@ -208,7 +208,7 @@ namespace VLC_Form
         {
             if (VLCController != null)
             {
-                VLCController.Add("D:\\移動劇院測試用影片\\around0313.mp4");
+                VLCController.Add("D:\\移動劇院測試用影片\\BlueTear\\Test.mp4");
             }
         }
         /// <summary>
@@ -255,6 +255,19 @@ namespace VLC_Form
         {
             if (VLCController != null)
                 VLCController.Forward(5);
+        }
+
+        /// <summary>
+        /// 音量調整
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VolumeChange(object sender, EventArgs e)
+        {
+            if (VLCController != null)
+                VLCController.Volume = VolumeSlider.Value;
+
+            Txt_CurrentVolume.Text = VolumeSlider.Value.ToString();
         }
     }
 }

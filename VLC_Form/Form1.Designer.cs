@@ -49,7 +49,12 @@ namespace VLC_Form
             this.Txt_TotalTime = new System.Windows.Forms.Label();
             this.Btn_Backward = new System.Windows.Forms.Button();
             this.Btn_Forward = new System.Windows.Forms.Button();
+            this.VolumeSlider = new System.Windows.Forms.TrackBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Txt_CurrentVolume = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentTimeSlider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VolumeSlider)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_Play
@@ -242,11 +247,51 @@ namespace VLC_Form
             this.Btn_Forward.UseVisualStyleBackColor = true;
             this.Btn_Forward.Click += new System.EventHandler(this.Btn_Forward_Click);
             // 
+            // VolumeSlider
+            // 
+            this.VolumeSlider.Location = new System.Drawing.Point(300, 92);
+            this.VolumeSlider.Maximum = 100;
+            this.VolumeSlider.Name = "VolumeSlider";
+            this.VolumeSlider.Size = new System.Drawing.Size(104, 45);
+            this.VolumeSlider.TabIndex = 20;
+            this.VolumeSlider.ValueChanged += new System.EventHandler(this.VolumeChange);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(300, 125);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 12);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(381, 125);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(23, 12);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "100";
+            // 
+            // Txt_CurrentVolume
+            // 
+            this.Txt_CurrentVolume.AutoSize = true;
+            this.Txt_CurrentVolume.Location = new System.Drawing.Point(410, 92);
+            this.Txt_CurrentVolume.Name = "Txt_CurrentVolume";
+            this.Txt_CurrentVolume.Size = new System.Drawing.Size(33, 12);
+            this.Txt_CurrentVolume.TabIndex = 23;
+            this.Txt_CurrentVolume.Text = "label7";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Txt_CurrentVolume);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.VolumeSlider);
             this.Controls.Add(this.Btn_Forward);
             this.Controls.Add(this.Btn_Backward);
             this.Controls.Add(this.Txt_TotalTime);
@@ -270,6 +315,7 @@ namespace VLC_Form
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.CurrentTimeSlider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VolumeSlider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,6 +343,10 @@ namespace VLC_Form
         private System.Windows.Forms.Label Txt_TotalTime;
         private System.Windows.Forms.Button Btn_Backward;
         private System.Windows.Forms.Button Btn_Forward;
+        private System.Windows.Forms.TrackBar VolumeSlider;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label Txt_CurrentVolume;
     }
 }
 

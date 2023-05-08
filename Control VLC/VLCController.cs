@@ -109,6 +109,26 @@ namespace Control_VLC
         }
 
         /// <summary>
+        /// 音量控制
+        /// <para>0~100 (%)</para>
+        /// </summary>
+        public int Volume
+        {
+            get
+            {
+                if (MediaPlayer == null)
+                    return 0;
+                else
+                    return MediaPlayer.Volume;
+            }
+            set
+            {
+                if (MediaPlayer != null)
+                    MediaPlayer.Volume = value;
+            }
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         public bool IsPlaying
