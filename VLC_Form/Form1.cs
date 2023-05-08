@@ -89,10 +89,20 @@ namespace VLC_Form
         {
             while (true)
             {
-                if (VLCController != null)
+                if (VLCController != null && VLCController.IsPlaying)
                 {
-                    //Txt_CurrentTime.Invoke((MethodInvoker)(() => { Txt_CurrentTime.Text = VLCController.CurrentTime.ToString(); }));
                     Invoke((MethodInvoker)(() => { Txt_CurrentTime.Text = VLCController.GetCurrentTime.ToString(); }));
+
+                    if (VLCController.GetTotalTime != 0 && Txt_TotalTime.Text != VLCController.GetTotalTime.ToString())
+                    {
+                        Console.WriteLine("總秒數 : " + VLCController.GetTotalTime);
+
+                        Invoke((MethodInvoker)(() => { Txt_TotalTime.Text = VLCController.GetTotalTime.ToString(); }));
+
+                        Invoke((MethodInvoker)(() => { CurrentTimeSlider.Maximum = VLCController.GetTotalTime; }));
+                    }
+
+                    Invoke((MethodInvoker)(() => { CurrentTimeSlider.Value = VLCController.GetCurrentTime; }));
                 }
 
                 Thread.Sleep(100);

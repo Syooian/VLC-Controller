@@ -44,6 +44,10 @@ namespace VLC_Form
             this.label3 = new System.Windows.Forms.Label();
             this.Btn_Add = new System.Windows.Forms.Button();
             this.Txt_CurrentTime = new System.Windows.Forms.Label();
+            this.CurrentTimeSlider = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Txt_TotalTime = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentTimeSlider)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_Play
@@ -183,17 +187,47 @@ namespace VLC_Form
             // Txt_CurrentTime
             // 
             this.Txt_CurrentTime.AutoSize = true;
-            this.Txt_CurrentTime.Location = new System.Drawing.Point(10, 222);
+            this.Txt_CurrentTime.Location = new System.Drawing.Point(650, 12);
             this.Txt_CurrentTime.Name = "Txt_CurrentTime";
             this.Txt_CurrentTime.Size = new System.Drawing.Size(33, 12);
             this.Txt_CurrentTime.TabIndex = 14;
             this.Txt_CurrentTime.Text = "label4";
+            // 
+            // CurrentTimeSlider
+            // 
+            this.CurrentTimeSlider.Location = new System.Drawing.Point(300, 12);
+            this.CurrentTimeSlider.Name = "CurrentTimeSlider";
+            this.CurrentTimeSlider.Size = new System.Drawing.Size(344, 45);
+            this.CurrentTimeSlider.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(300, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 12);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "0";
+            // 
+            // Txt_TotalTime
+            // 
+            this.Txt_TotalTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Txt_TotalTime.AutoSize = true;
+            this.Txt_TotalTime.Location = new System.Drawing.Point(633, 45);
+            this.Txt_TotalTime.Name = "Txt_TotalTime";
+            this.Txt_TotalTime.Size = new System.Drawing.Size(11, 12);
+            this.Txt_TotalTime.TabIndex = 17;
+            this.Txt_TotalTime.Text = "0";
+            this.Txt_TotalTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Txt_TotalTime);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CurrentTimeSlider);
             this.Controls.Add(this.Txt_CurrentTime);
             this.Controls.Add(this.Btn_Add);
             this.Controls.Add(this.label3);
@@ -211,6 +245,7 @@ namespace VLC_Form
             this.Controls.Add(this.Btn_Play);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentTimeSlider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,6 +268,9 @@ namespace VLC_Form
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Btn_Add;
         private System.Windows.Forms.Label Txt_CurrentTime;
+        private System.Windows.Forms.TrackBar CurrentTimeSlider;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label Txt_TotalTime;
     }
 }
 

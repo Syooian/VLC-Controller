@@ -50,6 +50,8 @@ namespace Control_VLC
         /// <param name="VideoPath"></param>
         public void Add(string VideoPath)
         {
+            Console.WriteLine("Add : " + VideoPath);
+
             Media = new Media(VLC, VideoPath);
         }
 
