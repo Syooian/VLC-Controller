@@ -218,5 +218,26 @@ namespace VLC_Form
             if (VLCController != null)
                 VLCController.Pause();
         }
+
+        /// <summary>
+        /// 後退
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_Backward_Click(object sender, EventArgs e)
+        {
+            if (VLCController != null)
+                VLCController.Backward(5);
+        }
+        /// <summary>
+        /// 前進
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_Forward_Click(object sender, EventArgs e)
+        {
+            if (VLCController != null)
+                VLCController.Forward(5);
+        }
     }
 }

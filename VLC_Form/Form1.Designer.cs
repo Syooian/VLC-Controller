@@ -47,6 +47,8 @@ namespace VLC_Form
             this.CurrentTimeSlider = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
             this.Txt_TotalTime = new System.Windows.Forms.Label();
+            this.Btn_Backward = new System.Windows.Forms.Button();
+            this.Btn_Forward = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentTimeSlider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -220,11 +222,33 @@ namespace VLC_Form
             this.Txt_TotalTime.Text = "0";
             this.Txt_TotalTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // Btn_Backward
+            // 
+            this.Btn_Backward.Location = new System.Drawing.Point(302, 63);
+            this.Btn_Backward.Name = "Btn_Backward";
+            this.Btn_Backward.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Backward.TabIndex = 18;
+            this.Btn_Backward.Text = "<<";
+            this.Btn_Backward.UseVisualStyleBackColor = true;
+            this.Btn_Backward.Click += new System.EventHandler(this.Btn_Backward_Click);
+            // 
+            // Btn_Forward
+            // 
+            this.Btn_Forward.Location = new System.Drawing.Point(569, 63);
+            this.Btn_Forward.Name = "Btn_Forward";
+            this.Btn_Forward.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Forward.TabIndex = 19;
+            this.Btn_Forward.Text = ">>";
+            this.Btn_Forward.UseVisualStyleBackColor = true;
+            this.Btn_Forward.Click += new System.EventHandler(this.Btn_Forward_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Btn_Forward);
+            this.Controls.Add(this.Btn_Backward);
             this.Controls.Add(this.Txt_TotalTime);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.CurrentTimeSlider);
@@ -271,6 +295,8 @@ namespace VLC_Form
         private System.Windows.Forms.TrackBar CurrentTimeSlider;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label Txt_TotalTime;
+        private System.Windows.Forms.Button Btn_Backward;
+        private System.Windows.Forms.Button Btn_Forward;
     }
 }
 

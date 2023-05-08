@@ -63,12 +63,40 @@ namespace Control_VLC
             if (MediaPlayer == null)
             {
                 MediaPlayer = new MediaPlayer(VLC);
+
+                //無用
+                //MediaPlayer.Forward += new EventHandler<EventArgs>((Sender, E) => { Console.WriteLine("影片前進!!!"); });
+                //MediaPlayer.Backward += new EventHandler<EventArgs>((Sender, E) => { Console.WriteLine("影片後退!!!"); });
             }
 
             MediaPlayer.Media = Media;
 
             MediaPlayer.Play();
         }
+
+        /// <summary>
+        /// 影片前進
+        /// </summary>
+        /// <param name="Second">前進的秒數</param>
+        public void Forward(int Second)
+        {
+            if (MediaPlayer != null && MediaPlayer.IsSeekable)
+            {
+                MediaPlayer.SeekTo(TimeSpan.FromSeconds(GetCurrentTime).Add(TimeSpan.FromSeconds(Second)));
+            }
+        }
+        /// <summary>
+        /// 影片後退
+        /// </summary>
+        /// <param name="Second">後退的秒數</param>
+        public void Backward(int Second)
+        {
+            if (MediaPlayer != null && MediaPlayer.IsSeekable)
+            {
+                MediaPlayer.SeekTo(TimeSpan.FromSeconds(GetCurrentTime).Subtract(TimeSpan.FromSeconds(Second)));
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
