@@ -53,6 +53,7 @@ namespace VLC_Form
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Txt_CurrentVolume = new System.Windows.Forms.Label();
+            this.Cb_Loop = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentTimeSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeSlider)).BeginInit();
             this.SuspendLayout();
@@ -283,11 +284,23 @@ namespace VLC_Form
             this.Txt_CurrentVolume.TabIndex = 23;
             this.Txt_CurrentVolume.Text = "label7";
             // 
+            // Cb_Loop
+            // 
+            this.Cb_Loop.AutoSize = true;
+            this.Cb_Loop.Location = new System.Drawing.Point(569, 92);
+            this.Cb_Loop.Name = "Cb_Loop";
+            this.Cb_Loop.Size = new System.Drawing.Size(49, 16);
+            this.Cb_Loop.TabIndex = 24;
+            this.Cb_Loop.Text = "Loop";
+            this.Cb_Loop.UseVisualStyleBackColor = true;
+            this.Cb_Loop.CheckedChanged += new System.EventHandler(this.Cb_Loop_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Cb_Loop);
             this.Controls.Add(this.Txt_CurrentVolume);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -347,6 +360,7 @@ namespace VLC_Form
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label Txt_CurrentVolume;
+        private System.Windows.Forms.CheckBox Cb_Loop;
     }
 }
 

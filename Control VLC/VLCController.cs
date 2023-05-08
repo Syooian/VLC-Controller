@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using LibVLCSharp.Shared;
-using System.Diagnostics;
 
 namespace Control_VLC
 {
@@ -42,6 +41,11 @@ namespace Control_VLC
             };
 
             VLC = new LibVLC(enableDebugLogs: true);
+            //VLC = new LibVLC("-L");   //X
+            //VLC = new LibVLC(enableDebugLogs: true, "--loop");    //X
+            //VLC = new LibVLC("-R");   //X
+            //VLC = new LibVLC("--repeat"); //X
+            //VLC = new LibVLC("--input-repeat=2");   //O
         }
 
         /// <summary>
@@ -67,6 +71,17 @@ namespace Control_VLC
                 //無用
                 //MediaPlayer.Forward += new EventHandler<EventArgs>((Sender, E) => { Console.WriteLine("影片前進!!!"); });
                 //MediaPlayer.Backward += new EventHandler<EventArgs>((Sender, E) => { Console.WriteLine("影片後退!!!"); });
+
+                //播放結束時
+                MediaPlayer.EndReached += PlayEnd;
+
+                //MediaPlayer.Stopped += (S, E) => { Console.WriteLine("播放器已停止"); };
+                //不合理
+                //MediaPlayer.Stopped += PlayEnd;
+
+                //MediaPlayer.Paused += (S, E) => { Console.WriteLine("播放器已暫停"); };
+
+                //MediaPlayer.Playing += (S, E) => { Console.WriteLine("播放器正在播放"); };
             }
 
             MediaPlayer.Media = Media;
@@ -173,6 +188,58 @@ namespace Control_VLC
                 }
             }
         }
+
+        #region Loop控制
+        /// <summary>
+        /// 循環播放開關
+        /// </summary>
+        public bool Loop;
+        /// <summary>
+        /// 播放結束時
+        /// </summary>
+        /// <param name="Sender"></param>
+        /// <param name="E"></param>
+        void PlayEnd(object Sender, EventArgs E)
+        {
+            Console.WriteLine("播放結束，是否有Loop : " + Loop);
+
+            if (Loop)
+            {
+                //無法Loop的問題：https://stackoverflow.com/questions/56487740/how-to-achieve-looping-playback-with-libvlcsharp
+
+                Console.WriteLine("Loop Play, WillPlay : " + MediaPlayer.WillPlay);
+
+                //無效
+                //MediaPlayer.Play();
+
+                //無效
+                //MediaPlayer.Stop();
+                //MediaPlayer.Play();
+
+                //無效
+                //MediaPlayer.SeekTo(new TimeSpan());
+                //MediaPlayer.Play();
+
+                //有效但不好
+                //MediaPlayer = new MediaPlayer(VLC);
+                //MediaPlayer.Play(Media);
+
+                System.Threading.ThreadPool.QueueUserWorkItem(_ =>
+                {
+                    //有效但效果不好
+                    //MediaPlayer.Stop();
+                    //MediaPlayer.Play();
+
+                    //效果達到預期
+                    Play();
+                });
+            }
+            else
+            {
+
+            }
+        }
+        #endregion
 
         /// <summary>
         /// 

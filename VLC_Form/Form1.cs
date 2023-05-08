@@ -269,5 +269,18 @@ namespace VLC_Form
 
             Txt_CurrentVolume.Text = VolumeSlider.Value.ToString();
         }
+
+        /// <summary>
+        /// Loop設置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Cb_Loop_CheckedChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("Loop : " + Cb_Loop.Checked);
+
+            if (VLCController != null)
+                VLCController.Loop = Cb_Loop.Checked;
+        }
     }
 }
