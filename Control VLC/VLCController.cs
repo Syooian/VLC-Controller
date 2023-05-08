@@ -86,6 +86,17 @@ namespace Control_VLC
             }
         }
         /// <summary>
+        /// 到指定秒數
+        /// </summary>
+        /// <param name="Second"></param>
+        public void GoTo(int Second)
+        {
+            if (MediaPlayer != null && MediaPlayer.IsSeekable)
+            {
+                MediaPlayer.SeekTo(TimeSpan.FromSeconds(Second));
+            }
+        }
+        /// <summary>
         /// 影片後退
         /// </summary>
         /// <param name="Second">後退的秒數</param>

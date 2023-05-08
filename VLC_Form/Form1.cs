@@ -42,6 +42,14 @@ namespace VLC_Form
                     //VLCRemote.GetMessageAction -= GetMessage;
                 }
             });
+
+            CurrentTimeSlider.MouseDown += (Sender, E) => { IsSliderDragging = true; };
+            CurrentTimeSlider.MouseUp += (Sender, E) =>
+            {
+                IsSliderDragging = false;
+                if (VLCController != null)
+                    VLCController.GoTo(CurrentTimeSlider.Value);
+            };
         }
 
         #region TCP
@@ -85,6 +93,11 @@ namespace VLC_Form
             //Txt_CurrentTime.Invoke((MethodInvoker)() =>  Txt_CurrentTime.Text = VLCController.CurrentTime.ToString());
         }
 
+        /// <summary>
+        /// 時間拉條正在拉動中
+        /// </summary>
+        bool IsSliderDragging;
+
         void LoadingThread()
         {
             while (true)
@@ -102,7 +115,11 @@ namespace VLC_Form
                         Invoke((MethodInvoker)(() => { CurrentTimeSlider.Maximum = VLCController.GetTotalTime; }));
                     }
 
-                    Invoke((MethodInvoker)(() => { CurrentTimeSlider.Value = VLCController.GetCurrentTime; }));
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        if (!IsSliderDragging)
+                            CurrentTimeSlider.Value = VLCController.GetCurrentTime;
+                    }));
                 }
 
                 Thread.Sleep(100);
