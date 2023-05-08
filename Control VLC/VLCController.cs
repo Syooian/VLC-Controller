@@ -201,38 +201,15 @@ namespace Control_VLC
         /// <param name="E"></param>
         void PlayEnd(object Sender, EventArgs E)
         {
-            Console.WriteLine("播放結束，是否有Loop : " + Loop);
+            //Console.WriteLine("播放結束，是否有Loop : " + Loop);
 
             if (Loop)
             {
                 //無法Loop的問題：https://stackoverflow.com/questions/56487740/how-to-achieve-looping-playback-with-libvlcsharp
 
-                Console.WriteLine("Loop Play, WillPlay : " + MediaPlayer.WillPlay);
+                //Console.WriteLine("Loop Play, WillPlay : " + MediaPlayer.WillPlay);
 
-                //無效
-                //MediaPlayer.Play();
-
-                //無效
-                //MediaPlayer.Stop();
-                //MediaPlayer.Play();
-
-                //無效
-                //MediaPlayer.SeekTo(new TimeSpan());
-                //MediaPlayer.Play();
-
-                //有效但不好
-                //MediaPlayer = new MediaPlayer(VLC);
-                //MediaPlayer.Play(Media);
-
-                System.Threading.ThreadPool.QueueUserWorkItem(_ =>
-                {
-                    //有效但效果不好
-                    //MediaPlayer.Stop();
-                    //MediaPlayer.Play();
-
-                    //效果達到預期
-                    Play();
-                });
+                System.Threading.ThreadPool.QueueUserWorkItem(_ => Play());
             }
             else
             {
