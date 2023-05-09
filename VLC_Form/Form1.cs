@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PENet;
 
 namespace VLC_Form
 {
@@ -35,12 +36,12 @@ namespace VLC_Form
             {
                 Debug.Print("APP關閉");
 
-                if (Server != null)
-                {
-                    Server.Stop();
+                //if (Server != null)
+                //{
+                //    Server.Stop();
 
-                    //VLCRemote.GetMessageAction -= GetMessage;
-                }
+                //    //VLCRemote.GetMessageAction -= GetMessage;
+                //}
             });
 
             CurrentTimeSlider.MouseDown += (Sender, E) => { IsSliderDragging = true; };
@@ -56,13 +57,16 @@ namespace VLC_Form
         /// <summary>
         /// 
         /// </summary>
-        TcpListener Server;
+        PESocket<ClientSession, NetMsg> Socket;
 
         /// <summary>
         /// 啟動與播放器間的監聽
         /// </summary>
         void StartServer()
         {
+            Socket = new PESocket<ClientSession, NetMsg>();
+            Socket.StartAsClient(Tb_RemoteIP.Text, int.Parse(Tb_RemotePort.Text));
+
             //if (Server != null)
             //{
             //    Server.Stop();
