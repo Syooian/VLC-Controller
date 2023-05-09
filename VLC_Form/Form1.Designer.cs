@@ -121,7 +121,7 @@ namespace VLC_Form
             this.Tb_RemoteIP.Name = "Tb_RemoteIP";
             this.Tb_RemoteIP.Size = new System.Drawing.Size(186, 22);
             this.Tb_RemoteIP.TabIndex = 6;
-            this.Tb_RemoteIP.Text = "192.168.2.100";
+            this.Tb_RemoteIP.Text = "127.0.0.1";
             // 
             // Txt_Port
             // 
@@ -138,7 +138,7 @@ namespace VLC_Form
             this.Tb_RemotePort.Name = "Tb_RemotePort";
             this.Tb_RemotePort.Size = new System.Drawing.Size(186, 22);
             this.Tb_RemotePort.TabIndex = 8;
-            this.Tb_RemotePort.Text = "20000";
+            this.Tb_RemotePort.Text = "9666";
             // 
             // Btn_Add
             // 
