@@ -38,10 +38,6 @@ namespace VLC_Form
             this.Tb_RemoteIP = new System.Windows.Forms.TextBox();
             this.Txt_Port = new System.Windows.Forms.Label();
             this.Tb_RemotePort = new System.Windows.Forms.TextBox();
-            this.Tb_LocalPort = new System.Windows.Forms.TextBox();
-            this.Tb_LocalIP = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.Btn_Add = new System.Windows.Forms.Button();
             this.Txt_CurrentTime = new System.Windows.Forms.Label();
             this.CurrentTimeSlider = new System.Windows.Forms.TrackBar();
@@ -126,7 +122,6 @@ namespace VLC_Form
             this.Tb_RemoteIP.Size = new System.Drawing.Size(186, 22);
             this.Tb_RemoteIP.TabIndex = 6;
             this.Tb_RemoteIP.Text = "192.168.2.100";
-            this.Tb_RemoteIP.TextChanged += new System.EventHandler(this.Tb_ServerIP_TextChanged);
             // 
             // Txt_Port
             // 
@@ -136,7 +131,6 @@ namespace VLC_Form
             this.Txt_Port.Size = new System.Drawing.Size(63, 12);
             this.Txt_Port.TabIndex = 7;
             this.Txt_Port.Text = "Remote Port";
-            this.Txt_Port.Click += new System.EventHandler(this.Txt_Port_Click);
             // 
             // Tb_RemotePort
             // 
@@ -145,41 +139,6 @@ namespace VLC_Form
             this.Tb_RemotePort.Size = new System.Drawing.Size(186, 22);
             this.Tb_RemotePort.TabIndex = 8;
             this.Tb_RemotePort.Text = "20000";
-            this.Tb_RemotePort.TextChanged += new System.EventHandler(this.Tb_Port_TextChanged);
-            // 
-            // Tb_LocalPort
-            // 
-            this.Tb_LocalPort.Location = new System.Drawing.Point(108, 342);
-            this.Tb_LocalPort.Name = "Tb_LocalPort";
-            this.Tb_LocalPort.Size = new System.Drawing.Size(186, 22);
-            this.Tb_LocalPort.TabIndex = 10;
-            this.Tb_LocalPort.Text = "20000";
-            // 
-            // Tb_LocalIP
-            // 
-            this.Tb_LocalIP.Location = new System.Drawing.Point(108, 314);
-            this.Tb_LocalIP.Name = "Tb_LocalIP";
-            this.Tb_LocalIP.Size = new System.Drawing.Size(186, 22);
-            this.Tb_LocalIP.TabIndex = 9;
-            this.Tb_LocalIP.Text = "192.168.2.118";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 317);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 12);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Local IP";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 345);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Local Port";
             // 
             // Btn_Add
             // 
@@ -312,10 +271,6 @@ namespace VLC_Form
             this.Controls.Add(this.CurrentTimeSlider);
             this.Controls.Add(this.Txt_CurrentTime);
             this.Controls.Add(this.Btn_Add);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.Tb_LocalPort);
-            this.Controls.Add(this.Tb_LocalIP);
             this.Controls.Add(this.Tb_RemotePort);
             this.Controls.Add(this.Txt_Port);
             this.Controls.Add(this.Tb_RemoteIP);
@@ -345,10 +300,6 @@ namespace VLC_Form
         private System.Windows.Forms.TextBox Tb_RemoteIP;
         private System.Windows.Forms.Label Txt_Port;
         private System.Windows.Forms.TextBox Tb_RemotePort;
-        private System.Windows.Forms.TextBox Tb_LocalPort;
-        private System.Windows.Forms.TextBox Tb_LocalIP;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Btn_Add;
         private System.Windows.Forms.Label Txt_CurrentTime;
         private System.Windows.Forms.TrackBar CurrentTimeSlider;

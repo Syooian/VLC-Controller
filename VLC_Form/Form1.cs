@@ -154,13 +154,9 @@ namespace VLC_Form
 
                     Debug.Print("選擇檔案 : " + OpenFileDialog.FileName);
 
-                    //Debug.Print("連線IP : " + Tb_ServerIP.Text + ", Port : " + Port);
-
-                    int Port = int.Parse(Tb_LocalPort.Text);
-
                     StartServer();
 
-                    VLCController = new Control_VLC.VLCController(OpenFileDialog.FileName, Tb_LocalIP.Text, Port);
+                    VLCController = new Control_VLC.VLCController(OpenFileDialog.FileName);
                 }
                 catch (SecurityException ex)
                 {
@@ -173,21 +169,6 @@ namespace VLC_Form
             }
         }
         #endregion
-
-        private void Tb_Port_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txt_Port_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tb_ServerIP_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         /// <summary>
         /// 按下停止

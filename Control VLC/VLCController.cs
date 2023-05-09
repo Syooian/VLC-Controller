@@ -28,10 +28,8 @@ namespace Control_VLC
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="Path"></param>
-        /// <param name="IP"></param>
-        /// <param name="Port"></param>
-        public VLCController(string Path, string IP, int Port)
+        /// <param name="Path">播放器路徑</param>
+        public VLCController(string Path)
         {
             var DirectoryInfo = new DirectoryInfo(Path);
 
