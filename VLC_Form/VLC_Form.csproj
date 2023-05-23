@@ -84,6 +84,10 @@
       <Project>{d62bf4fc-4066-4e8d-91ea-fb3028e3d1ef}</Project>
       <Name>Control VLC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VideoSettingLoader\VideoSettingLoader.csproj">
+      <Project>{a090cae9-28d1-4729-97fe-aab0eef15305}</Project>
+      <Name>VideoSettingLoader</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

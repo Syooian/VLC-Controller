@@ -50,6 +50,9 @@ namespace VLC_Form
             this.label6 = new System.Windows.Forms.Label();
             this.Txt_CurrentVolume = new System.Windows.Forms.Label();
             this.Cb_Loop = new System.Windows.Forms.CheckBox();
+            this.Btn_Load = new System.Windows.Forms.Button();
+            this.Tb_VideoSettingFilePath = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentTimeSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeSlider)).BeginInit();
             this.SuspendLayout();
@@ -254,11 +257,43 @@ namespace VLC_Form
             this.Cb_Loop.UseVisualStyleBackColor = true;
             this.Cb_Loop.CheckedChanged += new System.EventHandler(this.Cb_Loop_CheckedChanged);
             // 
+            // Btn_Load
+            // 
+            this.Btn_Load.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Btn_Load.Location = new System.Drawing.Point(108, 108);
+            this.Btn_Load.Name = "Btn_Load";
+            this.Btn_Load.Size = new System.Drawing.Size(90, 90);
+            this.Btn_Load.TabIndex = 25;
+            this.Btn_Load.Text = "讀取影片設定檔";
+            this.Btn_Load.UseVisualStyleBackColor = true;
+            this.Btn_Load.Click += new System.EventHandler(this.Btn_Load_Click);
+            // 
+            // Tb_VideoSettingFilePath
+            // 
+            this.Tb_VideoSettingFilePath.Location = new System.Drawing.Point(108, 314);
+            this.Tb_VideoSettingFilePath.Name = "Tb_VideoSettingFilePath";
+            this.Tb_VideoSettingFilePath.Size = new System.Drawing.Size(186, 22);
+            this.Tb_VideoSettingFilePath.TabIndex = 27;
+            this.Tb_VideoSettingFilePath.Text = "D:\\Syooian\\WorkProjects\\A0079\\MovingTheater\\Client\\MovingTheaterClient\\OfficeVide" +
+    "o.json";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 317);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 12);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "影片設定檔路徑";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Tb_VideoSettingFilePath);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Btn_Load);
             this.Controls.Add(this.Cb_Loop);
             this.Controls.Add(this.Txt_CurrentVolume);
             this.Controls.Add(this.label6);
@@ -312,6 +347,9 @@ namespace VLC_Form
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label Txt_CurrentVolume;
         private System.Windows.Forms.CheckBox Cb_Loop;
+        private System.Windows.Forms.Button Btn_Load;
+        private System.Windows.Forms.TextBox Tb_VideoSettingFilePath;
+        private System.Windows.Forms.Label label2;
     }
 }
 

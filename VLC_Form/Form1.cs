@@ -263,5 +263,22 @@ namespace VLC_Form
             if (VLCController != null)
                 VLCController.Loop = Cb_Loop.Checked;
         }
+
+        private void Btn_Load_Click(object sender, EventArgs e)
+        {
+            var VideoSetting = VideoSettingLoader.VideoSettingLoader.LoadVideoSetting(Tb_VideoSettingFilePath.Text, out string Error);
+
+            if (string.IsNullOrEmpty(Error))
+            {
+                for (int a = 0; a < VideoSetting.VideoData.Length; a++)
+                {
+                    Debug.Print("Name : " + VideoSetting.VideoData[a].Name + ", ID : " + VideoSetting.VideoData[a].ID + ", Para : " + VideoSetting.VideoData[a].VideoName);
+                }
+            }
+            else
+            {
+                Console.WriteLine("讀取影片設定檔錯誤 : " + Error);
+            }
+        }
     }
 }
