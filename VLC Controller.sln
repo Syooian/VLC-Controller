@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLC Client_Form", "VLC Clie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLC Controller Lib", "VLC Controller Lib\VLC Controller Lib.csproj", "{D62BF4FC-4066-4E8D-91EA-FB3028E3D1EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLC Server_Form", "VLC Server_Form\VLC Server_Form.csproj", "{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLC Server_Console", "VLC Server_Console\VLC Server_Console.csproj", "{33B4A88B-0A06-4BC0-8E7E-78A97D813656}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,30 @@ Global
 		{D62BF4FC-4066-4E8D-91EA-FB3028E3D1EF}.Release|x64.Build.0 = Release|x64
 		{D62BF4FC-4066-4E8D-91EA-FB3028E3D1EF}.Release|x86.ActiveCfg = Release|x86
 		{D62BF4FC-4066-4E8D-91EA-FB3028E3D1EF}.Release|x86.Build.0 = Release|x86
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Debug|x64.Build.0 = Debug|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Debug|x86.Build.0 = Debug|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Release|x64.ActiveCfg = Release|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Release|x64.Build.0 = Release|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Release|x86.ActiveCfg = Release|Any CPU
+		{2BC89DB2-A526-4E8F-B56E-CD43ED72BA18}.Release|x86.Build.0 = Release|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Debug|x64.Build.0 = Debug|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Debug|x86.Build.0 = Debug|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Release|x64.ActiveCfg = Release|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Release|x64.Build.0 = Release|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Release|x86.ActiveCfg = Release|Any CPU
+		{33B4A88B-0A06-4BC0-8E7E-78A97D813656}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
