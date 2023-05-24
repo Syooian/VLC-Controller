@@ -1,5 +1,5 @@
 ﻿
-namespace VLC_Form
+namespace VLC_Client_Form
 {
     partial class Form1
     {

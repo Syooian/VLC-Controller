@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using LibVLCSharp.Shared;
 
-namespace Control_VLC
+namespace VLCControllerLib
 {
     //https://github.com/ZeBobo5/Vlc.DotNet/
 

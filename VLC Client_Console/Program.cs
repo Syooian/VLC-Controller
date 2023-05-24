@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.Threading;
 using WebSocketSharp;
 
-namespace VLC_Console
+namespace VLC_Client_Console
 {
     class Program
     {
@@ -22,7 +22,7 @@ namespace VLC_Console
         /// <summary>
         /// 
         /// </summary>
-        static Control_VLC.VLCController VLCController;
+        static VLCControllerLib.VLCController VLCController;
 
         static void Main(string[] args)
         {

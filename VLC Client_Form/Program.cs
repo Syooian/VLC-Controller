@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace VLC_Form
+namespace VLC_Client_Form
 {
     static class Program
     {

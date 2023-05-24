@@ -14,14 +14,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VLC_Form
+namespace VLC_Client_Form
 {
     public partial class Form1 : Form
     {
         /// <summary>
         /// 
         /// </summary>
-        Control_VLC.VLCController VLCController;
+        VLCControllerLib.VLCController VLCController;
 
         public Form1()
         {
@@ -156,7 +156,7 @@ namespace VLC_Form
 
                     StartServer();
 
-                    VLCController = new Control_VLC.VLCController(OpenFileDialog.FileName);
+                    VLCController = new VLCControllerLib.VLCController(OpenFileDialog.FileName);
                 }
                 catch (SecurityException ex)
                 {
