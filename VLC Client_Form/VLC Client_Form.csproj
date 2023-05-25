@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6DA465AF-8EE2-417C-B8C7-53B0ACE813DA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>VLC_Form</RootNamespace>
+    <RootNamespace>VLC_Client_Form</RootNamespace>
     <AssemblyName>VLC Client_Form</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -65,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

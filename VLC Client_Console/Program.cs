@@ -17,6 +17,15 @@ namespace VLC_Client_Console
         /// <summary>
         /// 
         /// </summary>
+        static int TheaterID;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        static ClientSettingStruct ClientSetting;
+        /// <summary>
+        /// 
+        /// </summary>
         static PlayerSettingStruct VideoSetting;
 
         /// <summary>
@@ -26,7 +35,6 @@ namespace VLC_Client_Console
 
         static void Main(string[] args)
         {
-            ClientSettingStruct ClientSetting;
             #region 讀取Client設定檔
             {
                 Console.WriteLine("讀取影片設定檔");
@@ -38,6 +46,8 @@ namespace VLC_Client_Console
                     {
                         ClientSetting = JsonConvert.DeserializeObject<ClientSettingStruct>(File.ReadAllText(ClientSettingFile));
                         //ClientSetting = new ClientSettingStruct();
+
+                        TheaterID = ClientSetting.TheaterID;
                     }
                     catch (Exception ex)
                     {
@@ -85,9 +95,11 @@ namespace VLC_Client_Console
                     Debug.Print(VideoSetting.VideoData[a].ID + " : " + VideoSetting.VideoData[a].Name);
                 }
             }
+
+            VLCController = new VLCControllerLib.VLCController(ClientSetting.VLCPath);
             #endregion
 
-            Console.WriteLine("Client初始化完成");
+            Console.WriteLine("Client初始化完成，TheaterID : " + TheaterID);
 
             #region WebSocket連線
             try
@@ -107,7 +119,7 @@ namespace VLC_Client_Console
 
             try
             {
-                Console.WriteLine("連線中...");
+                Console.WriteLine(ClientSetting.ServerConnection.IP + ":" + ClientSetting.ServerConnection.Port + " 連線中...");
 
                 Socket.Connect();
             }
@@ -140,25 +152,31 @@ namespace VLC_Client_Console
         /// <param name="E"></param>
         static void OnSocketOpen(object Sender, EventArgs E)
         {
-            Console.WriteLine("Socket Open : " + Sender);
+            Console.WriteLine("連線成功");
+
+            //Thread T = new Thread(new ThreadStart(RnnThread));
+            //T.IsBackground = true;
+            //T.Start();
+
+            Socket.Send("From Client " + TheaterID);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="Sender"></param>
         /// <param name="E"></param>
-        static void OnSocketClose(object Sender, EventArgs E)
+        static void OnSocketClose(object Sender, CloseEventArgs E)
         {
-            Console.WriteLine("Socket Close : " + Sender);
+            Console.WriteLine("連線中斷 Code : " + E.Code + ", R : " + E.Reason);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="Sender"></param>
         /// <param name="E"></param>
-        static void OnSocketError(object Sender, EventArgs E)
+        static void OnSocketError(object Sender, WebSocketSharp.ErrorEventArgs E)
         {
-            Console.WriteLine("Socket Error : " + Sender);
+            Console.WriteLine("Socket Error : " + E.Message);
         }
         /// <summary>
         /// 
@@ -167,20 +185,39 @@ namespace VLC_Client_Console
         /// <param name="E"></param>
         static void OnSocketMessage(object Sender, MessageEventArgs E)
         {
-            Console.WriteLine("Socket GetMessage : " + Sender);
+            Console.WriteLine("GetMessage : " + E.Data);
+
+            switch (E.Data)
+            {
+                case "Play":
+                    {
+                        VLCController.Add(ClientSetting.VideoFilePath + "/" + VideoSetting.VideoData[0].VideoName);
+                        VLCController.Play();
+                        break;
+                    }
+                case "Stop":
+                    {
+                        VLCController.Stop();
+                        break;
+                    }
+                case "Pause":
+                    {
+                        VLCController.Pause();
+                        break;
+                    }
+            }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        static void RnnThread()
+        static void RunThread()
         {
             while (true)
             {
+                Socket.Send("From Client " + TheaterID);
 
-
-
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
             }
         }
         #endregion
@@ -192,6 +229,10 @@ namespace VLC_Client_Console
     [Serializable]
     struct ClientSettingStruct
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public int TheaterID;
         /// <summary>
         /// 與伺服器的連線
         /// </summary>

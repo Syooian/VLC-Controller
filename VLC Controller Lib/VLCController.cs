@@ -33,17 +33,26 @@ namespace VLCControllerLib
         {
             var DirectoryInfo = new DirectoryInfo(Path);
 
-            var Options = new string[]
-            {
+            //var Options = new string[]
+            //{
+            //    //"--qt-fullscreen-screennumber=0"
+            //    //":no-audio"
 
-            };
+            //};
 
-            VLC = new LibVLC(enableDebugLogs: true);
+            VLC = new LibVLC(enableDebugLogs: false/*, Options*/);
+            VLC.SetLogFile("VLC Controller Log.txt");
+
             //VLC = new LibVLC("-L");   //X
             //VLC = new LibVLC(enableDebugLogs: true, "--loop");    //X
             //VLC = new LibVLC("-R");   //X
             //VLC = new LibVLC("--repeat"); //X
             //VLC = new LibVLC("--input-repeat=2");   //O
+
+            MediaPlayer = new MediaPlayer(VLC);
+            MediaPlayer.Fullscreen = true;
+            MediaPlayer.EnableHardwareDecoding = true;
+            MediaPlayer.EndReached += PlayEnd;
         }
 
         /// <summary>
@@ -54,7 +63,25 @@ namespace VLCControllerLib
         {
             Console.WriteLine("Add : " + VideoPath);
 
+            var Options = new string[]
+            {
+                //"--fullscreen",
+                //"-f",
+                //"--qt-fullscreen-screennumber=0",
+                //":no-audio"
+                "--video-filter croppadd",
+                "--croppadd-croptop 1066",
+                "--croppadd-cropbottom 0",
+                "--croppadd-cropleft 0",
+                "--croppadd-cropright 4168"
+            };
+
             Media = new Media(VLC, VideoPath);
+
+            for (int a = 0; a < Options.Length; a++)
+                Media.AddOption(Options[a]);
+            //Media.AddOption("-f");
+            //Media.AddOption("--qt-fullscreen-screennumber=1");
         }
 
         /// <summary>

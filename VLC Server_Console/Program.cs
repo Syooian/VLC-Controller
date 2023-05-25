@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace VLC_Server_Console
 {
@@ -94,7 +95,11 @@ namespace VLC_Server_Console
             #region WebSocket連線
             try
             {
-                Socket = new WebSocketServer(Config.Port);
+                ShowLog("Server啟動中，Port : " + Config.Port);
+
+                Socket = new WebSocketServer(60001);
+                Socket.AddWebSocketService<Server>("/");
+
                 Socket.Start();
             }
             catch (Exception ex)
@@ -105,15 +110,62 @@ namespace VLC_Server_Console
             }
             #endregion
 
-            ShowLog("Server啟動成功，Port : " + Socket.Port);
+            ShowLog("成功啟動");
+
+            //Thread T = new Thread(new ThreadStart(ThreadRun));
+            //T.IsBackground = true;
+            //T.Start();
+
+            ConsoleKeyInfo Input;
+            while (true)
+            {
+                Input = Console.ReadKey(true);
+                //Console.WriteLine(Input.Key);
+
+                switch (Input.Key)
+                {
+                    case ConsoleKey.P:
+                        Socket.WebSocketServices.Broadcast("Play");//Play
+                        break;
+                    case ConsoleKey.S:
+                        Socket.WebSocketServices.Broadcast("Stop");//Stop
+                        break;
+                    case ConsoleKey.A:
+                        Socket.WebSocketServices.Broadcast("Pause");//Pause
+                        break;
+                }
+            }
+
             Console.ReadLine();
         }
 
         /// <summary>
         /// 
         /// </summary>
+        static void ThreadRun()
+        {
+            while (true)
+            {
+                Console.WriteLine("Press " + Console.ReadKey().Key);
+
+                switch (Console.ReadKey().Key)
+                {
+                    case ConsoleKey.R:
+                        {
+
+                            break;
+                        }
+                }
+
+                Thread.Sleep(100);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="Msg"></param>
-        static void ShowLog(string Msg)
+        public static void ShowLog(string Msg)
         {
             string LogMsg = DateTime.Now.ToString() + "	" + Msg;
 
