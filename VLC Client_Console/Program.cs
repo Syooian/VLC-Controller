@@ -246,10 +246,6 @@ namespace VLC_Client_Console
         /// </summary>
         public string VLCPath;
         /// <summary>
-        /// 畫面寬高
-        /// </summary>
-        public Vector2 Canvas;
-        /// <summary>
         /// 
         /// </summary>
         public CameraStruct[] Camera;
@@ -261,31 +257,41 @@ namespace VLC_Client_Console
     struct CameraStruct
     {
         /// <summary>
-        /// 攝影機位置 (World)
-        /// </summary>
-        public Vector2 Position;
-        /// <summary>
-        /// 
-        /// </summary>
-        public int Size;
-        /// <summary>
-        /// 
+        /// 螢幕
         /// </summary>
         public int TargetDisplay;
         /// <summary>
+        /// 畫面裁切範圍
+        /// </summary>
+        public Crop Crop;
+        /// <summary>
         /// 旋轉角度
         /// </summary>
-        public float RotationAngle;
+        public int RotateAngle;
     }
 
     /// <summary>
-    /// 
+    /// 畫面裁切範圍
     /// </summary>
     [Serializable]
-    public struct Vector2
+    public struct Crop
     {
-        public float x;
-        public float y;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Top;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Bottom;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Left;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Right;
     }
 
     /// <summary>

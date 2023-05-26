@@ -1,0 +1,38 @@
+vlc --video-splitter wall --wall-cols 2 --wall-rows 1 --video-filter croppadd --croppadd-cropright 1068 --croppadd-cropleft 1068 --croppadd-cropbottom 2213 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4"
+
+
+vlc --video-filter croppadd --croppadd-croptop 0 --croppadd-cropbottom 2213 --croppadd-cropleft 1068 --croppadd-cropright 1068 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" --fullscreen --no-qt-fs-controller --no-video-title-show --qt-fullscreen-screennumber=0
+vlc --video-filter croppadd --croppadd-croptop 1066 --croppadd-cropbottom 0 --croppadd-cropleft 1068 --croppadd-cropright 1068 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" --fullscreen --no-qt-fs-controller --no-video-title-show --qt-fullscreen-screennumber=1 --no-audio
+
+vlc --video-filter croppadd --croppadd-croptop 1066 --croppadd-cropbottom 0 --croppadd-cropleft 0 --croppadd-cropright 4168 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4"
+
+X
+vlc --video-filter "tranform{true}" --transform-type=90 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" 
+vlc "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" --video-filter --rotate-angle=180
+
+翻轉正確，無切割
+vlc D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4 :vout-filter=transform,crop --transform-type=90 --video-filter "transform{true}" croppadd --croppadd-croptop=0 --croppadd-cropbottom=4168 --croppadd-cropleft=0 --croppadd-cropright=1066
+翻轉正確，無切割
+vlc D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4 --video-filter "transform{true}" --transform-type=90 --croppadd-croptop=1066 --croppadd-cropbottom=0 --croppadd-cropleft=0 --croppadd-cropright=4168 
+X
+vlc D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4 --video-filter=transform,croppadd --transform-type=90 --croppadd-croptop=0 --croppadd-cropbottom=4168 --croppadd-cropleft=0 --croppadd-cropright=1066
+只有切沒有翻轉
+vlc D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4 --video-filter=croppadd,transform --transform-type=90 --croppadd-croptop=1066 --croppadd-cropbottom=0 --croppadd-cropleft=0 --croppadd-cropright=4168
+O，有切割有翻轉
+vlc D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4 --video-filter=croppadd:transform --croppadd-croptop=1066 --croppadd-cropbottom=0 --croppadd-cropleft=0 --croppadd-cropright=4168 --transform-type=90
+
+X
+vlc D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4 --transform-type=90 --croppadd-croptop=0 --croppadd-cropbottom=4168 --croppadd-cropleft=0 --croppadd-cropright=1066
+
+X
+vlc --vout-filter=transform --transform-type=90 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" 
+X
+vlc --vout-filter  "tranform{true}" --transform-type=90 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" 
+X
+vlc --vout-filter --transform-type=90 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" 
+X
+vlc :vout-filter=transform --transform-type=90 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" 
+X
+vlc --video-filter "tranform{true}" --transform-type=90 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" 
+X
+vlc :vout-filter "tranform{true}" --transform-type=90 "D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4" 
