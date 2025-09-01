@@ -18,6 +18,7 @@ X
 vlc D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4 --video-filter=transform,croppadd --transform-type=90 --croppadd-croptop=0 --croppadd-cropbottom=4168 --croppadd-cropleft=0 --croppadd-cropright=1066
 只有切沒有翻轉
 vlc D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4 --video-filter=croppadd,transform --transform-type=90 --croppadd-croptop=1066 --croppadd-cropbottom=0 --croppadd-cropleft=0 --croppadd-cropright=4168
+
 O，有切割有翻轉
 vlc D:\MovingTheaterTestVideo\BlueTear_Office_20221206.mp4 --video-filter=croppadd:transform --croppadd-croptop=1066 --croppadd-cropbottom=0 --croppadd-cropleft=0 --croppadd-cropright=4168 --transform-type=90
 
